@@ -1,2 +1,4 @@
 /vendor/
 /composer.phar
+/_output/*
+!/_output/.keep

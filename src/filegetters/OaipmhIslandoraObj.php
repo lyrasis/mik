@@ -85,6 +85,10 @@ class OaipmhIslandoraObj extends FileGetter
         // require an OBJ datastream, e.g., PDF, video and audio content models.
         foreach ($this->datastreamIds as $dsid) {
             $ds_url = $islandora_host . '/islandora/object/' . $pid . '/datastream/' . $dsid . '/download';
+            $this->log->addInfo(
+                "ds_url",
+                array('url' => $ds_url)
+            );
             // HEAD is probably more efficient than the default GET.
             stream_context_set_default(array('http' => array('method' => 'HEAD')));
             $headers = get_headers($ds_url, 1);
