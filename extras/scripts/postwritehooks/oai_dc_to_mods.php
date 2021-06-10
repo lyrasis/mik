@@ -17,7 +17,7 @@ $children_record_keys = explode(',', $argv[2]);
 $config_path = trim($argv[3]);
 $config = parse_ini_file($config_path, true);
 
-$path_to_stylesheet = 'extras/scripts/postwritehooks/oai_dc_to_mods.xsl';
+$path_to_stylesheet = $config['WRITER']['path_to_stylesheet'];
 
 $oai_dc_backup_dir = $config['WRITER']['output_directory'] .
     DIRECTORY_SEPARATOR . 'oai-dc-backup';
@@ -93,4 +93,3 @@ function trim_date($input) {
   $date = preg_replace('/T.*$/', '', $input);
   return $date;
 }
-
