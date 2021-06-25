@@ -104,6 +104,9 @@ class CsvSingleFile extends Writer
 
         $source_file_name = pathinfo($source_file_path, PATHINFO_FILENAME);
         $source_file_extension = pathinfo($source_file_path, PATHINFO_EXTENSION);
+        // in case the record_id has an extension, discard before using
+        $record_id = pathinfo($record_id, PATHINFO_FILENAME);
+        
         $identifier = ($preserve_content_filenames) ? $source_file_name : $record_id;
 
         $content_file_path = $output_path . $identifier . '.' . $source_file_extension;
