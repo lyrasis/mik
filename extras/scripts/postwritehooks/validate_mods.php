@@ -10,7 +10,7 @@
 require 'vendor/autoload.php';
 
 // Relative to MIK, not this script.
-$path_to_schema = 'extras/scripts/mods-3-5.xsd';
+$path_to_schema = 'extras/LoC/mods-3-6.xsd';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
