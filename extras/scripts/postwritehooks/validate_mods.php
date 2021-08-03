@@ -10,7 +10,7 @@
 require 'vendor/autoload.php';
 
 // Relative to MIK, not this script.
-$path_to_schema = 'extras/scripts/mods-3-5.xsd';
+$path_to_schema = 'extras/LoC/mods-3-6.xsd';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -152,6 +152,8 @@ function csv_single_file_writer($record_key, $path_to_schema, $config, $info_log
     validate_mods($path_to_schema, $path_to_mods, $info_log, $error_log);
   }
   else {
+    // drop extension from record_key, so we get the accompanying MODS file
+    $record_key = pathinfo($record_key, PATHINFO_FILENAME);
     $path_to_mods = $config['WRITER']['output_directory'] . DIRECTORY_SEPARATOR .
       $record_key . '.xml';
     validate_mods($path_to_schema, $path_to_mods, $info_log, $error_log);
