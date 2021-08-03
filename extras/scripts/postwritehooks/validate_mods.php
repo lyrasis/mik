@@ -152,6 +152,8 @@ function csv_single_file_writer($record_key, $path_to_schema, $config, $info_log
     validate_mods($path_to_schema, $path_to_mods, $info_log, $error_log);
   }
   else {
+    // drop extension from record_key, so we get the accompanying MODS file
+    $record_key = pathinfo($record_key, PATHINFO_FILENAME);
     $path_to_mods = $config['WRITER']['output_directory'] . DIRECTORY_SEPARATOR .
       $record_key . '.xml';
     validate_mods($path_to_schema, $path_to_mods, $info_log, $error_log);
